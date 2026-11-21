@@ -1,0 +1,2 @@
+let context;
+export function pop(correct=true){try{context??=new (window.AudioContext||window.webkitAudioContext)();context.resume();const o=context.createOscillator(),g=context.createGain(),t=context.currentTime;o.type='sine';o.frequency.setValueAtTime(correct?680:180,t);o.frequency.exponentialRampToValueAtTime(correct?980:110,t+.09);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.12,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+.16);o.connect(g);g.connect(context.destination);o.start(t);o.stop(t+.18)}catch{}}
